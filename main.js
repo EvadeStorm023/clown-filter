@@ -1,12 +1,10 @@
 nx = 0;
 ny = 0;
 function preload(){
-
+img = loadImage('https://i.postimg.cc/k4MtSrHZ/clownnose.png')
 }
 
-function draw(){
-image(video,0,0,300,300)
-}
+
 
 function setup(){
     canvas = createCanvas(300,300)
@@ -18,8 +16,10 @@ poseNet = ml5.poseNet(video,modelLoaded)
 poseNet.on('pose', gotposes)
 }
 
+
+
 function modelLoaded(){
-    console.log('modelhas been loaded')
+    console.log('model has been loaded')
 }
 function gotposes(results){
     if(results.length > 0){
@@ -29,6 +29,14 @@ function gotposes(results){
      console.log(nx,ny);
     }
 }
+
+function draw(){
+    image(video,0,0,300,300)
+    fill('red')
+    stroke('red')
+   // circle(nx, ny, 20);
+    image(img,nx-19,ny-19,45,45)
+    }
 
 function take_snapshot(){
     save("filter.png")
